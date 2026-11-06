@@ -83,8 +83,11 @@
   <section class="tour" aria-labelledby="tour-h">
     <div class="container tour__grid">
       <div class="tour__stage">
-        <figure class="shot" data-slot="gui" data-kind="product" data-step="1" data-alt="apic-gui with a project open: the contract tree, the request tables and the response pane">
-          <img src="images/gui.png" width="1898" height="1022" alt="The apic desktop app with the Login contract open: a tree of contracts on the left, the POST request with its headers and JSON body in the middle, and the 200 response on the right." loading="lazy">
+        <figure class="shot" data-slot="gui" data-kind="product" data-step="1" data-alt="apic-gui at three moments: a contract open, the contract in edit mode, the response examples menu">
+          <img class="s1 s1-light" src="images/contract-light.png" width="1272" height="766" alt="The Create New Password contract open in apic-gui in the Tokyo Night Day theme: the contract tree, the POST request with its headers and JSON body, and the 200 example response." loading="lazy">
+          <img class="s1 s1-dark" src="images/contract-dark.png" width="1272" height="766" alt="The Create New Password contract open in apic-gui in the Tokyo Night Storm theme: the contract tree, the POST request with its headers and JSON body, and the 200 example response." loading="lazy">
+          <img class="s2" src="images/edit.png" width="1272" height="766" alt="The same contract in edit mode: header rows with delete buttons, an empty row for a new header, a JSON body dropdown, and the environment menu open." loading="lazy">
+          <img class="s3" src="images/responses.png" width="1272" height="766" alt="The response examples menu open, listing 200 OK and three 400 Bad Request examples with a New example button." loading="lazy">
         </figure>
       </div>
       <div class="tour__panels">
@@ -100,7 +103,7 @@
           </li>
           <li data-step="3">
             <h3>Every response, by status code</h3>
-            <p>Switch between the examples a contract documents, each with its own body and headers.</p>
+            <p>Pick an example by its code, or add a new one for the next error case.</p>
           </li>
         </ol>
       </div>
@@ -169,6 +172,18 @@ Content-Type   <span class="t-s">application/json</span>
 <span class="t-k">RESPONSE</span> <span class="t-warn">409</span>, Conflict</code></pre>
         </figure>
       </div>
+    </div>
+  </section>
+
+  <section class="review" aria-labelledby="review-h">
+    <div class="container review__grid">
+      <div class="review__text">
+        <h2 id="review-h">See which field changed</h2>
+        <p class="lead">The Changes view reads a contract diff field by field. Tick the files, write the message, commit.</p>
+      </div>
+      <figure class="review__shot" data-slot="diff" data-kind="product" data-alt="The Changes view in apic-gui: a changed login.json with the old and new message lines">
+        <img src="images/diff.png" width="1272" height="766" alt="The Changes view in apic-gui: login.json is selected in a tree of changed files, and the diff of its 200 response shows the message changing from Login berhasil to Berhasil." loading="lazy">
+      </figure>
     </div>
   </section>
 
