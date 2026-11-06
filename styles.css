@@ -67,7 +67,7 @@ a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; bo
 /* hero */
 .hero { padding-block: var(--space-2xl) 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-lg); justify-items: start; }
 .hero h1 { font-size: var(--text-display); font-weight: 600; letter-spacing: var(--tracking-display); line-height: 1.02; max-width: 15ch; color: var(--color-ink); }
-.lead { font-size: var(--text-lead); line-height: 1.45; color: var(--color-ink-2); max-width: 44ch; }
+.lead { font-size: var(--text-lead); line-height: 1.45; color: var(--color-ink-2); max-width: 54ch; }
 .line {
   display: flex; align-items: center; gap: var(--space-md); margin-top: var(--space-xs);
   padding: var(--space-2xs) var(--space-2xs) var(--space-2xs) var(--space-lg);
