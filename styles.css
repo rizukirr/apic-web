@@ -1,5 +1,6 @@
 /* Hallmark · shape: Command Log, one column where every section head is the command that does it · genre: modern-minimal · theme: custom · job: try · idea: "Each section is headed by the apic command that does the job, with its real output under it" · vibe: "plain, quiet, a well-kept README set large"
  * paper: oklch(91.3% 0.007 277) Tokyo Night Day, oklch(28.2% 0.036 275) Storm · accent: oklch(51.2% 0.156 264) Day blue, from apic-gui · display: Onest · body: Onest · outlier: Red Hat Mono for commands and code · hero: left-aligned head, one line, the install command, then the app full width · nav: one quiet line, wordmark and two links · footer: a colophon of two lines · imagery: the product (user captures of apic-gui, real apic CLI output) · signature: section heads that are runnable commands, with the real output under each
+ * copy: verbatim (the hero line is the owner's wording)
  * axes: light/grotesk-sans/cool · posture: full palette (Tokyo Night syntax roles: command blue, flag orange, string green) · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H5 E4 S5 R5 V5 · weakest: P, a README-like page argues little; the commands as heads make the claim that the tool is the files and the terminal */
 @import url("./tokens.css");
