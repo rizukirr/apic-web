@@ -1,5 +1,34 @@
 [
  {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "page",
+  "shape": "Command Log",
+  "theme": "custom",
+  "axes": "light/grotesk-sans/cool",
+  "hero": "left head, install command, app band",
+  "nav": "one quiet line",
+  "footer": "colophon",
+  "imagery": "product: user captures of apic-gui, real apic CLI output",
+  "photos": [],
+  "entry": "command heads",
+  "fingerprint": "command-log/one-column",
+  "sections": [
+   "hero",
+   "apic create",
+   "git diff",
+   "apic send",
+   "apic-gui",
+   "install",
+   "docs",
+   "footer"
+  ],
+  "signature": "section heads that are runnable commands",
+  "waived": [],
+  "prompt": "redesign apic landing page, simple and minimal",
+  "date": "2026-11-06"
+ },
+ {
   "shape": "Split Studio",
   "theme": "cobalt",
   "axes": "light/grotesk-sans/cool",
