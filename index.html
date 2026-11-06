@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>apic, API contracts in your repo</title>
+<meta name="description" content="apic keeps API contracts as plain JSON files in your Git repo, edited from a CLI or a desktop app and reviewed in pull requests.">
+<link rel="icon" type="image/png" href="images/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>try { const t = localStorage.getItem('apic-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+</head>
+<body>
+
+<div class="banner">
+    <div class="container banner__inner">
+      <p><a href="https://github.com/rizukirr/apic/releases">apic 0.6.0 adds apic send</a></p>
+    </div>
+  </div>
+  <header class="bar">
+  <nav aria-label="Main">
+    <div class="container bar__inner">
+      <a class="wordmark" href="#top" aria-label="apic home">
+        <img src="images/icon.png" width="28" height="28" alt="">
+        <span>apic</span>
+      </a>
+      <div class="bar__links">
+        <a href="#docs">Docs</a>
+        <a href="#install">Install</a>
+        <button class="theme-toggle" type="button" aria-label="Switch colour theme" data-theme-toggle>
+          <svg class="i-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="i-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        </button>
+        <a class="key key--small" href="https://github.com/rizukirr/apic">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+  </header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__text">
+        <h1>API contracts that live in your repo</h1>
+        <p class="lead">One JSON file per endpoint, reviewed in pull requests like code.</p>
+        <div class="actions">
+          <a class="key key--primary" href="#install">Install apic</a>
+          <a class="key" href="https://github.com/rizukirr/apic">Star on GitHub</a>
+        </div>
+        <p class="terms">Free and open source under GPL-3.0, for Linux, macOS and Windows.</p>
+      </div>
+
+      <figure class="pane diff" aria-label="A git diff of one contract file">
+        <div class="pane__head">
+          <span class="pane__file">orders/create.json</span>
+          <span class="pane__stat">+4</span>
+        </div>
+<pre class="pane__body"><code><span class="d-meta">@@ -23,6 +23,10 @@</span>
+<span class="d-ctx">         {</span>
+<span class="d-ctx">             <span class="t-k">"code"</span><span class="t-p">:</span> <span class="t-n">201</span><span class="t-p">,</span></span>
+<span class="d-ctx">             <span class="t-k">"description"</span><span class="t-p">:</span> <span class="t-s">"Created"</span></span>
+<span class="d-add">+        },</span>
+<span class="d-add">+        {</span>
+<span class="d-add">+            <span class="t-k">"code"</span><span class="t-p">:</span> <span class="t-n">409</span><span class="t-p">,</span></span>
+<span class="d-add">+            <span class="t-k">"description"</span><span class="t-p">:</span> <span class="t-s">"Conflict"</span></span>
+<span class="d-ctx">         }</span>
+<span class="d-ctx">     ]</span>
+<span class="d-ctx"> }</span></code></pre>
+        <figcaption class="pane__foot">
+          <code class="cmd">apic edit -f create --response '409:Conflict'</code>
+          <button class="copy" type="button" data-copy="apic edit -f create --response '409:Conflict'">Copy</button>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="tour" aria-labelledby="tour-h">
+    <div class="container tour__grid">
+      <div class="tour__stage">
+        <figure class="shot" data-slot="gui" data-kind="product" data-step="1" data-alt="apic-gui with a project open: the contract tree, the request tables and the response pane">
+          <img src="images/gui.png" width="1898" height="1022" alt="The apic desktop app with the Login contract open: a tree of contracts on the left, the POST request with its headers and JSON body in the middle, and the 200 response on the right." loading="lazy">
+        </figure>
+      </div>
+      <div class="tour__panels">
+        <h2 id="tour-h">The desktop app reads the same files</h2>
+        <ol class="tour__list">
+          <li data-step="1">
+            <h3>Every contract, one tree</h3>
+            <p>Folders in your repo become groups, each endpoint tagged with its method.</p>
+          </li>
+          <li data-step="2">
+            <h3>Tables for headers, JSON for bodies</h3>
+            <p>Edit headers and query params as rows, bodies as JSON or multipart parts.</p>
+          </li>
+          <li data-step="3">
+            <h3>Every response, by status code</h3>
+            <p>Switch between the examples a contract documents, each with its own body and headers.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement" aria-labelledby="statement-h">
+    <div class="container">
+      <h2 id="statement-h" class="statement__line">If a teammate can clone the repo, they can edit the contract.</h2>
+      <dl class="facts">
+        <div><dt>Sharing</dt><dd>A git push, with no seats to buy.</dd></div>
+        <div><dt>History</dt><dd>Contracts change in the commit that changes the code.</dd></div>
+        <div><dt>Review</dt><dd>Changes arrive as diffs in the pull request.</dd></div>
+        <div><dt>Git built in</dt><dd>The app commits, branches and resolves conflicts.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="mapping" aria-labelledby="mapping-h">
+    <div class="container">
+      <div class="head-split">
+        <h2 id="mapping-h">One file, two readers</h2>
+        <p class="lead">Git diffs the JSON. Your terminal prints it as tables.</p>
+      </div>
+      <div class="mapping__panes">
+        <figure class="pane" aria-label="The contract file">
+          <div class="pane__head"><span class="pane__file">orders/create.json</span></div>
+<pre class="pane__body"><code><span class="t-p">{</span>
+    <span class="t-k">"name"</span><span class="t-p">:</span> <span class="t-s">"create"</span><span class="t-p">,</span>
+    <span class="t-k">"method"</span><span class="t-p">:</span> <span class="t-s">"POST"</span><span class="t-p">,</span>
+    <span class="t-k">"url"</span><span class="t-p">:</span> <span class="t-s">"https://api.example.com/orders"</span><span class="t-p">,</span>
+    <span class="t-k">"headers"</span><span class="t-p">: [</span>
+        <span class="t-p">{</span> <span class="t-k">"name"</span><span class="t-p">:</span> <span class="t-s">"Content-Type"</span><span class="t-p">,</span>
+          <span class="t-k">"value"</span><span class="t-p">:</span> <span class="t-s">"application/json"</span><span class="t-p">,</span>
+          <span class="t-k">"required"</span><span class="t-p">:</span> <span class="t-l">true</span> <span class="t-p">}</span>
+    <span class="t-p">],</span>
+    <span class="t-k">"request"</span><span class="t-p">: {</span>
+        <span class="t-k">"sku"</span><span class="t-p">:</span> <span class="t-s">"tee-black-m"</span><span class="t-p">,</span>
+        <span class="t-k">"qty"</span><span class="t-p">:</span> <span class="t-n">2</span>
+    <span class="t-p">},</span>
+    <span class="t-k">"responses"</span><span class="t-p">: [</span>
+        <span class="t-p">{</span> <span class="t-k">"code"</span><span class="t-p">:</span> <span class="t-n">201</span><span class="t-p">,</span> <span class="t-k">"description"</span><span class="t-p">:</span> <span class="t-s">"Created"</span> <span class="t-p">},</span>
+        <span class="t-p">{</span> <span class="t-k">"code"</span><span class="t-p">:</span> <span class="t-n">409</span><span class="t-p">,</span> <span class="t-k">"description"</span><span class="t-p">:</span> <span class="t-s">"Conflict"</span> <span class="t-p">}</span>
+    <span class="t-p">]</span>
+<span class="t-p">}</span></code></pre>
+        </figure>
+        <figure class="pane" aria-label="The same contract printed by apic read">
+          <div class="pane__head"><span class="pane__file">apic read -f create</span></div>
+<pre class="pane__body"><code><span class="t-k">CREATE</span>
+
+<span class="t-n">POST</span> https://api.example.com/orders
+
+<span class="t-k">QUERY</span>
+<span class="t-m">(none)</span>
+
+<span class="t-k">HEADERS</span>
+Content-Type   <span class="t-s">application/json</span>
+
+<span class="t-k">REQUEST</span>
+<span class="t-p">{</span>
+  <span class="t-k">"sku"</span><span class="t-p">:</span> <span class="t-s">"tee-black-m"</span><span class="t-p">,</span>
+  <span class="t-k">"qty"</span><span class="t-p">:</span> <span class="t-n">2</span>
+<span class="t-p">}</span>
+
+<span class="t-k">RESPONSE</span> <span class="t-ok">201</span>, Created
+<span class="t-k">RESPONSE</span> <span class="t-warn">409</span>, Conflict</code></pre>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="install" id="install" aria-labelledby="install-h">
+    <div class="container">
+      <div class="head-split">
+        <h2 id="install-h">Install it from your package manager</h2>
+        <p class="lead">Two binaries over one core: apic for the terminal, apic-gui for the desktop.</p>
+      </div>
+      <div class="switch" data-switch>
+        <div class="tray" role="tablist" aria-label="Which binary">
+          <button class="tray__key" type="button" role="tab" id="tab-cli" aria-controls="panel-cli" aria-selected="true">Command line</button>
+          <button class="tray__key" type="button" role="tab" id="tab-gui" aria-controls="panel-gui" aria-selected="false" tabindex="-1">Desktop app</button>
+        </div>
+        <div class="switch__panel" role="tabpanel" id="panel-cli" aria-labelledby="tab-cli">
+          <table class="install__table">
+            <thead><tr><th scope="col">Where</th><th scope="col">Command</th><th scope="col"><span class="visually-hidden">Copy</span></th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Arch and CachyOS</th><td><code>yay -S apic-bin</code></td><td><button class="copy" type="button" data-copy="yay -S apic-bin">Copy</button></td></tr>
+              <tr><th scope="row">Fedora</th><td><code>sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-cli</code></td><td><button class="copy" type="button" data-copy="sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-cli">Copy</button></td></tr>
+              <tr><th scope="row">Windows</th><td><code>winget install rizukirr.apic</code></td><td><button class="copy" type="button" data-copy="winget install rizukirr.apic">Copy</button></td></tr>
+              <tr><th scope="row">crates.io</th><td><code>cargo install apic-cli</code></td><td><button class="copy" type="button" data-copy="cargo install apic-cli">Copy</button></td></tr>
+              <tr><th scope="row">Any platform</th><td><a href="https://github.com/rizukirr/apic/releases">Prebuilt archives with checksums</a></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="switch__panel" role="tabpanel" id="panel-gui" aria-labelledby="tab-gui">
+          <table class="install__table">
+            <thead><tr><th scope="col">Where</th><th scope="col">Command</th><th scope="col"><span class="visually-hidden">Copy</span></th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Arch and CachyOS</th><td><code>yay -S apic-bin</code></td><td><button class="copy" type="button" data-copy="yay -S apic-bin">Copy</button></td></tr>
+              <tr><th scope="row">Fedora</th><td><code>sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-gui</code></td><td><button class="copy" type="button" data-copy="sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-gui">Copy</button></td></tr>
+              <tr><th scope="row">Flatpak</th><td><code>flatpak install io.github.rizukirr.apic</code></td><td><button class="copy" type="button" data-copy="flatpak install io.github.rizukirr.apic">Copy</button></td></tr>
+              <tr><th scope="row">Windows</th><td><code>winget install rizukirr.apic-gui</code></td><td><button class="copy" type="button" data-copy="winget install rizukirr.apic-gui">Copy</button></td></tr>
+              <tr><th scope="row">crates.io</th><td><code>cargo install apic-gui</code></td><td><button class="copy" type="button" data-copy="cargo install apic-gui">Copy</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="docs" id="docs" aria-labelledby="docs-h">
+    <div class="container docs__grid">
+      <div class="docs__head">
+        <h2 id="docs-h">Read the manual</h2>
+      </div>
+      <ul class="docs__rows">
+        <li><a href="https://github.com/rizukirr/apic/blob/main/COMMAND.md"><h3>Commands</h3><p>Every command, flag and example, from init to validate.</p></a></li>
+        <li><a href="https://github.com/rizukirr/apic/blob/main/CONTRACT.md"><h3>Contract format</h3><p>The JSON schema, project templates and config.</p></a></li>
+        <li><a href="https://github.com/rizukirr/apic/blob/main/SENDING.md"><h3>Sending requests</h3><p>Environments, variables and apic send.</p></a></li>
+        <li><a href="https://github.com/rizukirr/apic/blob/main/GUI.md"><h3>Desktop app</h3><p>Editing, Postman import and the git panel.</p></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="close" aria-labelledby="close-h">
+    <div class="container close__inner">
+      <h2 id="close-h">Start with apic init</h2>
+      <div class="close__actions">
+        <div class="chip">
+          <code>cargo install apic-cli &amp;&amp; apic init</code>
+          <button class="copy" type="button" data-copy="cargo install apic-cli &amp;&amp; apic init">Copy</button>
+        </div>
+        <a class="key" href="https://github.com/rizukirr/apic">Star on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__mark">
+      <a class="wordmark" href="#top" aria-label="apic home">
+        <img src="images/icon.png" width="28" height="28" alt="">
+        <span>apic</span>
+      </a>
+      <p>API contracts as plain files, for teams that already share a repo.</p>
+    </div>
+    <div class="footer__col">
+      <h2 class="footer__h">Docs</h2>
+      <ul>
+        <li><a href="https://github.com/rizukirr/apic/blob/main/COMMAND.md">Commands</a></li>
+        <li><a href="https://github.com/rizukirr/apic/blob/main/CONTRACT.md">Contract format</a></li>
+        <li><a href="https://github.com/rizukirr/apic/blob/main/SENDING.md">Sending</a></li>
+        <li><a href="https://github.com/rizukirr/apic/blob/main/GUI.md">Desktop app</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h2 class="footer__h">Get it</h2>
+      <ul>
+        <li><a href="https://github.com/rizukirr/apic/releases">Releases</a></li>
+        <li><a href="https://crates.io/crates/apic-cli">crates.io</a></li>
+        <li><a href="https://aur.archlinux.org/packages/apic-bin">AUR</a></li>
+        <li><a href="https://copr.fedorainfracloud.org/coprs/rizukirr/apic/">COPR</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h2 class="footer__h">Project</h2>
+      <ul>
+        <li><a href="https://github.com/rizukirr/apic">Source</a></li>
+        <li><a href="https://github.com/rizukirr/apic/issues">Issues</a></li>
+        <li><a href="https://github.com/rizukirr/apic/blob/main/CHANGELOG.md">Changelog</a></li>
+        <li><a href="https://github.com/rizukirr/apic/blob/main/LICENSE">License</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <p class="footer__legal">Copyright 2026 Rizki Rakasiwi. Licensed GPL-3.0-only.</p>
+  </div>
+</footer>
+
+<p class="visually-hidden" aria-live="polite" data-copy-status></p>
+
+<script>window.hallmarkSlots = (m) => { for (const [k, v] of Object.entries(m)) { const s = document.querySelector(`[data-slot="${k}"]`); if (!s) continue; const im = new Image(); im.src = typeof v === 'string' ? v : v.src; im.alt = (typeof v === 'object' && v.alt) || s.dataset.alt || ''; s.querySelectorAll(':scope > img').forEach((o) => o.remove()); s.prepend(im); } };
+document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });</script>
+<script src="main.js" defer></script>
+</body>
+</html>

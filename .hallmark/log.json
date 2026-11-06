@@ -1,0 +1,29 @@
+[
+ {
+  "shape": "Split Studio",
+  "theme": "cobalt",
+  "axes": "light/grotesk-sans/cool",
+  "hero": "Banner",
+  "nav": "banner over a retracting bar",
+  "footer": "index columns",
+  "imagery": "product: apic-gui capture, apic CLI output",
+  "photos": [],
+  "entry": "diff pane",
+  "fingerprint": "split-studio/banner/diff",
+  "sections": [
+   "hero diff",
+   "pinned gui",
+   "statement",
+   "mapping",
+   "install switcher table",
+   "docs rows",
+   "close band",
+   "footer"
+  ],
+  "signature": "git diff adding a 409 response to orders/create.json",
+  "waived": [],
+  "prompt": "apic landing page for github.io",
+  "date": "2026-11-06",
+  "mode": "build"
+ }
+]
