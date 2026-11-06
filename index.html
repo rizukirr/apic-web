@@ -95,7 +95,7 @@
         <ol class="tour__list">
           <li data-step="1">
             <h3>Every contract, one tree</h3>
-            <p>Folders in your repo become groups, each endpoint tagged with its method.</p>
+            <p>Repo folders become groups, each endpoint tagged by method.</p>
           </li>
           <li data-step="2">
             <h3>Tables for headers, JSON for bodies</h3>
@@ -103,7 +103,7 @@
           </li>
           <li data-step="3">
             <h3>Every response, by status code</h3>
-            <p>Pick an example by its code, or add a new one for the next error case.</p>
+            <p>Pick an example by its code, or add one for the next error.</p>
           </li>
         </ol>
       </div>
@@ -179,10 +179,22 @@ Content-Type   <span class="t-s">application/json</span>
     <div class="container review__grid">
       <div class="review__text">
         <h2 id="review-h">See which field changed</h2>
-        <p class="lead">The Changes view reads a contract diff field by field. Tick the files, write the message, commit.</p>
+        <p class="lead">Changes are listed field by field. Tick the files and commit.</p>
       </div>
       <figure class="review__shot" data-slot="diff" data-kind="product" data-alt="The Changes view in apic-gui: a changed login.json with the old and new message lines">
         <img src="images/diff.png" width="1272" height="766" alt="The Changes view in apic-gui: login.json is selected in a tree of changed files, and the diff of its 200 response shows the message changing from Login berhasil to Berhasil." loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <section class="send" aria-labelledby="send-h">
+    <div class="container">
+      <div class="send__head">
+        <h2 id="send-h">Send it with your environment</h2>
+        <p class="lead">Pick an environment, press Ctrl+Enter, read the live reply.</p>
+      </div>
+      <figure class="send__shot" data-slot="live" data-kind="product" data-alt="apic-gui after Send: a GET request with the demo environment and its live 200 response">
+        <img src="images/live.png" width="1248" height="813" alt="apic-gui after sending the Get product contract with the demo environment: the URL $dummyjson/products/{id} with a select query param, and the Live pane showing 200 OK in 459 ms, 75 bytes, with the product JSON." loading="lazy">
       </figure>
     </div>
   </section>
@@ -230,9 +242,14 @@ Content-Type   <span class="t-s">application/json</span>
     <div class="container docs__grid">
       <div class="docs__head">
         <h2 id="docs-h">Read the manual</h2>
+        <div class="chip">
+          <code>cargo install apic-cli &amp;&amp; apic init</code>
+          <button class="copy" type="button" data-copy="cargo install apic-cli &amp;&amp; apic init">Copy</button>
+        </div>
+        <a class="key" href="https://github.com/rizukirr/apic">Star on GitHub</a>
       </div>
       <ul class="docs__rows">
-        <li><a href="https://github.com/rizukirr/apic/blob/main/COMMAND.md"><h3>Commands</h3><p>Every command, flag and example, from init to validate.</p></a></li>
+        <li><a href="https://github.com/rizukirr/apic/blob/main/COMMAND.md"><h3>Commands</h3><p>Every command, flag and example.</p></a></li>
         <li><a href="https://github.com/rizukirr/apic/blob/main/CONTRACT.md"><h3>Contract format</h3><p>The JSON schema, project templates and config.</p></a></li>
         <li><a href="https://github.com/rizukirr/apic/blob/main/SENDING.md"><h3>Sending requests</h3><p>Environments, variables and apic send.</p></a></li>
         <li><a href="https://github.com/rizukirr/apic/blob/main/GUI.md"><h3>Desktop app</h3><p>Editing, Postman import and the git panel.</p></a></li>
@@ -240,18 +257,6 @@ Content-Type   <span class="t-s">application/json</span>
     </div>
   </section>
 
-  <section class="close" aria-labelledby="close-h">
-    <div class="container close__inner">
-      <h2 id="close-h">Start with apic init</h2>
-      <div class="close__actions">
-        <div class="chip">
-          <code>cargo install apic-cli &amp;&amp; apic init</code>
-          <button class="copy" type="button" data-copy="cargo install apic-cli &amp;&amp; apic init">Copy</button>
-        </div>
-        <a class="key" href="https://github.com/rizukirr/apic">Star on GitHub</a>
-      </div>
-    </div>
-  </section>
 
 </main>
 
