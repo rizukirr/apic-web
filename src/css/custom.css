@@ -1,5 +1,7 @@
 /* The docs wear the landing page's brand: the Tokyo Night palette apic-gui
  * ships (Day for light, Storm for dark) and IBM Plex. Values match static/tokens.css. */
+/* Brand values, per theme. Infima sets its dark colours on html[data-theme='dark'],
+ * so the dark block uses the same selector and, coming later, wins. */
 :root {
   --apic-paper: oklch(91.3% 0.007 277);
   --apic-paper-2: oklch(88.4% 0.016 272);
@@ -9,40 +11,15 @@
   --apic-rule: oklch(79% 0.03 276);
   --apic-accent: oklch(51.2% 0.156 264);
 
-  --ifm-color-primary: var(--apic-accent);
   --ifm-color-primary-dark: oklch(47% 0.15 264);
   --ifm-color-primary-darker: oklch(44% 0.145 264);
   --ifm-color-primary-darkest: oklch(38% 0.13 264);
   --ifm-color-primary-light: oklch(55% 0.16 264);
   --ifm-color-primary-lighter: oklch(58% 0.16 264);
   --ifm-color-primary-lightest: oklch(64% 0.15 264);
-
-  --ifm-background-color: var(--apic-paper);
-  --ifm-background-surface-color: var(--apic-paper-2);
-  --ifm-font-color-base: var(--apic-ink);
-  --ifm-heading-color: var(--apic-ink);
-  --ifm-color-emphasis-300: var(--apic-rule);
-  --ifm-toc-border-color: var(--apic-rule);
-  --ifm-hr-border-color: var(--apic-rule);
-  --ifm-table-border-color: var(--apic-rule);
-  --ifm-table-stripe-background: color-mix(in oklab, var(--apic-paper-2) 60%, transparent);
-  --ifm-code-background: var(--apic-paper-2);
-  --ifm-menu-color-background-active: var(--apic-paper-2);
-  --ifm-menu-color-background-hover: var(--apic-paper-2);
-  --docusaurus-highlighted-code-line-bg: var(--apic-paper-3);
-
-  --ifm-font-family-base: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --ifm-font-family-monospace: "IBM Plex Mono", ui-monospace, monospace;
-  --ifm-heading-font-weight: 600;
-  --ifm-font-weight-bold: 600;
-  --ifm-code-font-size: 92%;
-  --ifm-navbar-height: 64px;
-  --ifm-navbar-background-color: var(--apic-paper-2);
-  --ifm-navbar-link-color: var(--apic-ink-2);
-  --ifm-global-radius: 6px;
 }
 
-[data-theme='dark'] {
+html[data-theme='dark'] {
   --apic-paper: oklch(28.2% 0.036 275);
   --apic-paper-2: oklch(31.2% 0.038 275);
   --apic-paper-3: oklch(34.5% 0.042 273);
@@ -57,6 +34,55 @@
   --ifm-color-primary-light: oklch(75% 0.12 264);
   --ifm-color-primary-lighter: oklch(78% 0.11 264);
   --ifm-color-primary-lightest: oklch(83% 0.09 264);
+}
+
+/* Infima's variables, mapped to the brand in both themes. */
+:root,
+html[data-theme='dark'] {
+  --ifm-color-primary: var(--apic-accent);
+  --ifm-background-color: var(--apic-paper);
+  --ifm-background-surface-color: var(--apic-paper-2);
+  --ifm-font-color-base: var(--apic-ink);
+  --ifm-heading-color: var(--apic-ink);
+  --ifm-color-content: var(--apic-ink);
+  --ifm-color-content-secondary: var(--apic-ink-2);
+
+  /* Infima's neutral greys (sidebar text, borders, hovers), tinted from ink to paper. */
+  --ifm-color-emphasis-0: var(--apic-paper);
+  --ifm-color-emphasis-100: color-mix(in oklab, var(--apic-ink) 6%, var(--apic-paper));
+  --ifm-color-emphasis-200: color-mix(in oklab, var(--apic-ink) 12%, var(--apic-paper));
+  --ifm-color-emphasis-300: var(--apic-rule);
+  --ifm-color-emphasis-400: color-mix(in oklab, var(--apic-ink) 35%, var(--apic-paper));
+  --ifm-color-emphasis-500: color-mix(in oklab, var(--apic-ink) 48%, var(--apic-paper));
+  --ifm-color-emphasis-600: color-mix(in oklab, var(--apic-ink) 62%, var(--apic-paper));
+  --ifm-color-emphasis-700: var(--apic-ink-2);
+  --ifm-color-emphasis-800: color-mix(in oklab, var(--apic-ink) 85%, var(--apic-ink-2));
+  --ifm-color-emphasis-900: var(--apic-ink);
+  --ifm-color-emphasis-1000: var(--apic-ink);
+  --ifm-hover-overlay: color-mix(in oklab, var(--apic-ink) 6%, transparent);
+
+  --ifm-toc-border-color: var(--apic-rule);
+  --ifm-hr-border-color: var(--apic-rule);
+  --ifm-table-border-color: var(--apic-rule);
+  --ifm-table-stripe-background: color-mix(in oklab, var(--apic-paper-2) 60%, transparent);
+  --ifm-code-background: var(--apic-paper-2);
+  --ifm-menu-color: var(--apic-ink-2);
+  --ifm-menu-color-background-active: var(--apic-paper-2);
+  --ifm-menu-color-background-hover: var(--apic-paper-2);
+  --ifm-scrollbar-track-background-color: var(--apic-paper);
+  --ifm-scrollbar-thumb-background-color: var(--apic-rule);
+  --ifm-scrollbar-thumb-hover-background-color: color-mix(in oklab, var(--apic-ink) 35%, var(--apic-paper));
+  --docusaurus-highlighted-code-line-bg: var(--apic-paper-3);
+
+  --ifm-font-family-base: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --ifm-font-family-monospace: "IBM Plex Mono", ui-monospace, monospace;
+  --ifm-heading-font-weight: 600;
+  --ifm-font-weight-bold: 600;
+  --ifm-code-font-size: 92%;
+  --ifm-navbar-height: 64px;
+  --ifm-navbar-background-color: var(--apic-paper-2);
+  --ifm-navbar-link-color: var(--apic-ink-2);
+  --ifm-global-radius: 6px;
 }
 
 /* Chrome, matched to the landing page (static/styles.css: .top, .mark, .theme, .foot) */
@@ -82,8 +108,8 @@
 .apic-theme:active { background: var(--apic-rule); }
 .apic-theme:focus-visible { outline: 2px solid var(--apic-accent); outline-offset: 2px; }
 .apic-theme svg { display: block; }
-.apic-theme__sun, [data-theme='dark'] .apic-theme__moon { display: none !important; }
-[data-theme='dark'] .apic-theme__sun { display: block !important; }
+.apic-theme__sun, html[data-theme='dark'] .apic-theme__moon { display: none !important; }
+html[data-theme='dark'] .apic-theme__sun { display: block !important; }
 
 .apic-foot { background: var(--apic-paper-2); border-top: 1px solid var(--apic-rule); font-size: 1.0625rem; }
 .apic-foot__inner {
