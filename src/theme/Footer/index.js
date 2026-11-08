@@ -6,13 +6,15 @@ import { useThemeConfig } from '@docusaurus/theme-common';
 
 export default function Footer() {
   const { footer } = useThemeConfig();
-  const icon = useBaseUrl('images/icon.png');
+  const markLight = useBaseUrl('images/logo/apic-mark-light.png');
+  const markDark = useBaseUrl('images/logo/apic-mark-dark.png');
   if (!footer) return null;
   return (
     <footer className="apic-foot">
       <div className="apic-foot__inner">
         <p className="apic-foot__close">
-          <img src={icon} width="32" height="32" alt="" />
+          <img className="apic-mark apic-mark--light" src={markLight} width="39" height="32" alt="" />
+          <img className="apic-mark apic-mark--dark" src={markDark} width="40" height="32" alt="" />
           <span>{footer.copyright}</span>
         </p>
         <p className="apic-foot__links">

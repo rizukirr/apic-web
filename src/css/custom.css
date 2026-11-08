@@ -90,7 +90,6 @@ html[data-theme='dark'] {
 .navbar { box-shadow: none; border-bottom: 1px solid var(--apic-rule); padding-inline: max(32px, calc((100% - 1376px) / 2 + 32px)); font-size: 1.0625rem; }
 .navbar__brand { gap: 8px; margin-right: 0; }
 .navbar__logo { height: 24px; margin-right: 0; }
-.navbar__logo img { border-radius: 4px; }
 .navbar__title { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; color: var(--apic-ink); }
 .navbar__items--right { gap: 24px; }
 .navbar__items--right > .navbar__link { padding: 0; color: var(--apic-ink-2); font-weight: 400; }
@@ -118,7 +117,9 @@ html[data-theme='dark'] .apic-theme__sun { display: block !important; }
 }
 .apic-foot p { margin: 0; }
 .apic-foot__close { display: flex; align-items: center; gap: 16px; max-width: 40ch; font-size: clamp(1.125rem, 0.35vw + 1rem, 1.3125rem); line-height: 1.45; color: var(--apic-ink); }
-.apic-foot__close img { flex-shrink: 0; border-radius: 4px; }
+.apic-foot__close img { flex-shrink: 0; }
+.apic-mark--dark, html[data-theme='dark'] .apic-mark--light { display: none; }
+html[data-theme='dark'] .apic-mark--dark { display: block; }
 .apic-foot__links { display: flex; gap: 24px; }
 .apic-foot__links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--apic-ink-2); text-decoration: underline; text-decoration-color: color-mix(in oklab, var(--apic-accent) 40%, transparent); text-underline-offset: 0.16em; }
 .apic-foot__links a:hover { color: var(--apic-accent); }

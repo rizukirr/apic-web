@@ -5,7 +5,11 @@ import { tokyoNightDay, tokyoNightStorm } from './src/prism-tokyo-night.js';
 const config = {
   title: 'apic',
   tagline: 'Git-Native API contracts and client',
-  favicon: 'images/icon.png',
+  favicon: 'images/logo/favicon-light-64.png',
+  headTags: [
+    { tagName: 'link', attributes: { rel: 'icon', type: 'image/png', href: '/apic-web/images/logo/favicon-dark-64.png', media: '(prefers-color-scheme: dark)' } },
+    { tagName: 'link', attributes: { rel: 'apple-touch-icon', href: '/apic-web/images/logo/apple-touch-icon.png' } },
+  ],
   url: 'https://rizukirr.github.io',
   baseUrl: '/apic-web/',
   trailingSlash: true,
@@ -45,7 +49,15 @@ const config = {
       navbar: {
         title: 'apic',
         // The landing page is static HTML, not a Docusaurus route, so leave the router.
-        logo: { alt: 'apic', src: 'images/icon.png', href: 'pathname:///apic-web/', target: '_self' },
+        logo: {
+          alt: 'apic',
+          src: 'images/logo/apic-mark-light.png',
+          srcDark: 'images/logo/apic-mark-dark.png',
+          width: 29,
+          height: 24,
+          href: 'pathname:///apic-web/',
+          target: '_self',
+        },
         // Same links, same order as the landing page's nav.
         items: [
           { href: 'pathname:///apic-web/#install', label: 'Install', position: 'right', target: '_self' },
