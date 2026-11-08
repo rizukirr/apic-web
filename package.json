@@ -3,10 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "sync-docs": "node scripts/sync-docs.mjs",
-    "prestart": "npm run sync-docs",
     "start": "docusaurus start",
-    "prebuild": "npm run sync-docs",
     "build": "docusaurus build",
     "serve": "docusaurus serve",
     "clear": "docusaurus clear"

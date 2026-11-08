@@ -3,13 +3,7 @@ name: Deploy site
 on:
   push:
     branches: [main]
-  # The docs come from rizukirr/apic, so rebuild daily to pick up doc changes,
-  # on demand, or when the apic repo sends a "docs-updated" dispatch.
-  schedule:
-    - cron: '17 3 * * *'
   workflow_dispatch:
-  repository_dispatch:
-    types: [docs-updated]
 
 permissions:
   contents: read

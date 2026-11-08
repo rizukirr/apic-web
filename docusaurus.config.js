@@ -15,7 +15,7 @@ const config = {
   onBrokenAnchors: 'warn',
   i18n: { defaultLocale: 'en', locales: ['en'] },
 
-  // The apic docs are plain GitHub Markdown ({{name}}, <query>), not MDX.
+  // The docs are plain Markdown ({{name}}, <query> appear in the text), not MDX.
   markdown: { format: 'detect', hooks: { onBrokenMarkdownLinks: 'throw' } },
 
   stylesheets: [
@@ -27,7 +27,11 @@ const config = {
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: { routeBasePath: 'docs', sidebarPath: './sidebars.js' },
+        docs: {
+          routeBasePath: 'docs',
+          sidebarPath: './sidebars.js',
+          editUrl: 'https://github.com/rizukirr/apic-web/edit/main/',
+        },
         blog: false,
         theme: { customCss: './src/css/custom.css' },
       }),
