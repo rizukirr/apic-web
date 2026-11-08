@@ -13,8 +13,8 @@ export default function Footer() {
     <footer className="apic-foot">
       <div className="apic-foot__inner">
         <p className="apic-foot__close">
-          <img className="apic-mark apic-mark--light" src={markLight} width="39" height="32" alt="" />
-          <img className="apic-mark apic-mark--dark" src={markDark} width="40" height="32" alt="" />
+          <img className="apic-mark apic-mark--light" src={markLight} width="21" height="32" alt="" />
+          <img className="apic-mark apic-mark--dark" src={markDark} width="21" height="32" alt="" />
           <span>{footer.copyright}</span>
         </p>
         <p className="apic-foot__links">
