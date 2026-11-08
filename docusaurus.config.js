@@ -71,6 +71,7 @@ const config = {
           { label: 'Source', href: 'https://github.com/rizukirr/apic' },
           { label: 'Issues', href: 'https://github.com/rizukirr/apic/issues' },
           { label: 'Changelog', href: 'https://github.com/rizukirr/apic/blob/main/CHANGELOG.md' },
+          { label: 'Privacy', to: '/privacy/' },
         ],
       },
       prism: {
