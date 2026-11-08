@@ -131,6 +131,11 @@ h2 { font-size: var(--text-section); line-height: 1.08; color: var(--color-ink);
 .review { padding-block: var(--section-gap) 0; }
 .review__pair { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--gap-columns); margin-top: var(--space-2xl); }
 
+/* history: the text beside the graph */
+.history { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-xl) var(--gap-columns); align-items: center; padding-block: var(--section-gap) 0; }
+.history__text { grid-column: 1 / span 4; display: grid; gap: var(--space-md); }
+.history__shot { grid-column: 5 / -1; }
+
 /* the desktop app, a bento */
 .app { padding-block: var(--section-gap) 0; }
 .bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap-columns); }
@@ -182,7 +187,7 @@ h2 { font-size: var(--text-section); line-height: 1.08; color: var(--color-ink);
   .hero__text { grid-column: 2; }
   .hero__shot > img { width: 100%; border-radius: var(--radius-card); }
   .hero__shot { grid-column: 2; }
-  .cli__head, .cli__panels, .install__head, .install table { grid-column: 1 / -1; }
+  .cli__head, .cli__panels, .install__head, .install table, .history__text, .history__shot { grid-column: 1 / -1; }
   .cli__head { gap: var(--space-xl); }
   .review__pair { grid-template-columns: minmax(0, 1fr); }
   .bento .tile, .tile--lead, .tile--lead + .tile { grid-column: 1 / -1; }
