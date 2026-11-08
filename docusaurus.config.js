@@ -46,9 +46,10 @@ const config = {
         title: 'apic',
         // The landing page is static HTML, not a Docusaurus route, so leave the router.
         logo: { alt: 'apic', src: 'images/icon.png', href: 'pathname:///apic-web/', target: '_self' },
+        // Same links, same order as the landing page's nav.
         items: [
-          { type: 'docSidebar', sidebarId: 'docs', position: 'left', label: 'Docs' },
-          { href: 'pathname:///apic-web/#install', label: 'Install', position: 'left', target: '_self' },
+          { href: 'pathname:///apic-web/#install', label: 'Install', position: 'right', target: '_self' },
+          { type: 'docSidebar', sidebarId: 'docs', position: 'right', label: 'Docs' },
           { href: 'https://github.com/rizukirr/apic', label: 'GitHub', position: 'right' },
         ],
       },

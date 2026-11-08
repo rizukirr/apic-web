@@ -37,6 +37,8 @@
   --ifm-font-weight-bold: 600;
   --ifm-code-font-size: 92%;
   --ifm-navbar-height: 64px;
+  --ifm-navbar-background-color: var(--apic-paper-2);
+  --ifm-navbar-link-color: var(--apic-ink-2);
   --ifm-global-radius: 6px;
 }
 
@@ -57,18 +59,57 @@
   --ifm-color-primary-lightest: oklch(83% 0.09 264);
 }
 
-.navbar { box-shadow: none; border-bottom: 1px solid var(--apic-rule); }
-.navbar__title { font-size: 1.25rem; letter-spacing: -0.02em; }
-.footer { background: var(--apic-paper-2); border-top: 1px solid var(--apic-rule); color: var(--apic-ink-2); }
-.footer__links { margin-bottom: 0; }
-.footer__copyright { color: var(--apic-ink-2); }
+/* Chrome, matched to the landing page (static/styles.css: .top, .mark, .theme, .foot) */
+/* The landing nav sits in a 1376px container with 32px gutters; line the docs nav up with it. */
+.navbar { box-shadow: none; border-bottom: 1px solid var(--apic-rule); padding-inline: max(32px, calc((100% - 1376px) / 2 + 32px)); font-size: 1.0625rem; }
+.navbar__brand { gap: 8px; margin-right: 0; }
+.navbar__logo { height: 24px; margin-right: 0; }
+.navbar__logo img { border-radius: 4px; }
+.navbar__title { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; color: var(--apic-ink); }
+.navbar__items--right { gap: 24px; }
+.navbar__items--right > .navbar__link { padding: 0; color: var(--apic-ink-2); font-weight: 400; }
+.navbar__items--right > .navbar__link:hover,
+.navbar__items--right > .navbar__link--active { color: var(--apic-accent); }
+/* Install and GitHub are plain links on the landing page: no external-link icon. */
+.navbar__items--right > .navbar__link svg { display: none; }
+
+.apic-theme {
+  display: inline-grid; place-items: center; width: 44px; height: 44px;
+  border: 0; border-radius: 6px; background: transparent; color: var(--apic-ink-2); cursor: pointer;
+  transition: background-color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.apic-theme:hover { background: var(--apic-paper-3); }
+.apic-theme:active { background: var(--apic-rule); }
+.apic-theme:focus-visible { outline: 2px solid var(--apic-accent); outline-offset: 2px; }
+.apic-theme svg { display: block; }
+.apic-theme__sun, [data-theme='dark'] .apic-theme__moon { display: none !important; }
+[data-theme='dark'] .apic-theme__sun { display: block !important; }
+
+.apic-foot { background: var(--apic-paper-2); border-top: 1px solid var(--apic-rule); font-size: 1.0625rem; }
+.apic-foot__inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;
+  max-width: 1376px; margin-inline: auto; padding: 64px 32px;
+}
+.apic-foot p { margin: 0; }
+.apic-foot__close { display: flex; align-items: center; gap: 16px; max-width: 40ch; font-size: clamp(1.125rem, 0.35vw + 1rem, 1.3125rem); line-height: 1.45; color: var(--apic-ink); }
+.apic-foot__close img { flex-shrink: 0; border-radius: 4px; }
+.apic-foot__links { display: flex; gap: 24px; }
+.apic-foot__links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--apic-ink-2); text-decoration: underline; text-decoration-color: color-mix(in oklab, var(--apic-accent) 40%, transparent); text-underline-offset: 0.16em; }
+.apic-foot__links a:hover { color: var(--apic-accent); }
+.apic-foot__links a svg { display: none; }
+
+@media (max-width: 996px) {
+  .navbar { padding-inline: 16px; }
+  .apic-foot__inner { padding: 40px 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .apic-theme { transition: none; }
+}
 .markdown h1 { letter-spacing: -0.03em; }
 .markdown h2, .markdown h3 { letter-spacing: -0.015em; }
 .markdown img { border-radius: 10px; outline: 1px solid var(--apic-rule); outline-offset: -1px; }
 .markdown :not(pre) > code { border: 0; color: var(--apic-ink); }
 
-/* Install points back at the landing page on this site, so it is not external. */
-.navbar__link[href$="/apic-web/#install"] svg { display: none; }
 
 /* Command signatures are code inside headings: keep the mono face, drop the box. */
 .markdown :is(h1, h2, h3, h4) code,
