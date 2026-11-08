@@ -13,9 +13,10 @@ export default function Footer() {
     <footer className="apic-foot">
       <div className="apic-foot__inner">
         <p className="apic-foot__close">
-          <img className="apic-mark apic-mark--light" src={markLight} width="21" height="32" alt="" />
-          <img className="apic-mark apic-mark--dark" src={markDark} width="21" height="32" alt="" />
-          <span>{footer.copyright}</span>
+          <img className="apic-mark apic-mark--light" src={markLight} width="13" height="20" alt="" />
+          <img className="apic-mark apic-mark--dark" src={markDark} width="13" height="20" alt="" />
+          {/* The copyright comes from docusaurus.config.js and may hold a link. */}
+          <span dangerouslySetInnerHTML={{ __html: footer.copyright }} />
         </p>
         <p className="apic-foot__links">
           {footer.links.map((l) => (

@@ -66,7 +66,7 @@ const config = {
         ],
       },
       footer: {
-        copyright: 'apic is free software under GPL-3.0-only, by Rizki Rakasiwi.',
+        copyright: 'apic is free software under GPL-3.0-only, by <a href="https://github.com/rizukirr">rizukirr</a>.',
         links: [
           { label: 'Source', href: 'https://github.com/rizukirr/apic' },
           { label: 'Issues', href: 'https://github.com/rizukirr/apic/issues' },
