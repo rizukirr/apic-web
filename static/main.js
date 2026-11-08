@@ -9,7 +9,7 @@ systemDark.addEventListener('change', labelToggle);
 toggle?.addEventListener('click', () => {
   const next = effective() === 'dark' ? 'light' : 'dark';
   root.dataset.theme = next;
-  try { localStorage.setItem('apic-theme', next); } catch (e) {}
+  try { localStorage.setItem('theme', next); } catch (e) {}
   labelToggle();
 });
 

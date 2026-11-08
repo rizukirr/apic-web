@@ -190,7 +190,7 @@ h2 { font-size: var(--text-section); line-height: 1.08; color: var(--color-ink);
 }
 @media (max-width: 40rem) {
   .top__links { gap: var(--space-sm); }
-  .top__links > a[href="#docs"] { display: none; }
+  .top__links > a[href="#install"] { display: none; }
   .line { width: 100%; }
   .line__cmd { font-size: var(--text-sm); }
   .tab { font-size: var(--text-sm); padding-inline: var(--space-md); }

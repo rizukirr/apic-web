@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<script>try { const t = localStorage.getItem('apic-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+<script>try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
     <a class="mark" href="#top" aria-label="apic home"><img src="images/icon.png" width="24" height="24" alt=""><span>apic</span></a>
     <div class="top__links">
       <a href="#install">Install</a>
-      <a href="#docs">Docs</a>
+      <a href="docs/">Docs</a>
       <a href="https://github.com/rizukirr/apic">GitHub</a>
       <button class="theme" type="button" aria-label="Switch colour theme" data-theme-toggle>
         <svg class="i-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
@@ -191,10 +191,10 @@
   <section class="docs container" id="docs" aria-labelledby="docs-h">
     <h2 id="docs-h">Docs</h2>
     <ul>
-      <li><a href="https://github.com/rizukirr/apic/blob/main/COMMAND.md">Commands</a><span>Every command, flag and example.</span></li>
-      <li><a href="https://github.com/rizukirr/apic/blob/main/CONTRACT.md">Contract format</a><span>The JSON schema, templates and config.</span></li>
-      <li><a href="https://github.com/rizukirr/apic/blob/main/SENDING.md">Sending</a><span>Environments, variables and apic send.</span></li>
-      <li><a href="https://github.com/rizukirr/apic/blob/main/GUI.md">Desktop app</a><span>Editing, Postman import and git.</span></li>
+      <li><a href="docs/commands/">Commands</a><span>Every command, flag and example.</span></li>
+      <li><a href="docs/contract/">Contract format</a><span>The JSON schema, templates and config.</span></li>
+      <li><a href="docs/sending/">Sending</a><span>Environments, variables and apic send.</span></li>
+      <li><a href="docs/gui/">Desktop app</a><span>Editing, Postman import and git.</span></li>
     </ul>
   </section>
 
