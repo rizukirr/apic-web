@@ -5,10 +5,10 @@ import { tokyoNightDay, tokyoNightStorm } from './src/prism-tokyo-night.js';
 const config = {
   title: 'apic',
   tagline: 'Git-Native API contracts and client',
-  favicon: 'images/logo/favicon-light-64.png',
+  favicon: 'images/logo/favicon-light-64.png?v=2',
   headTags: [
-    { tagName: 'link', attributes: { rel: 'icon', type: 'image/png', href: '/apic-web/images/logo/favicon-dark-64.png', media: '(prefers-color-scheme: dark)' } },
-    { tagName: 'link', attributes: { rel: 'apple-touch-icon', href: '/apic-web/images/logo/apple-touch-icon.png' } },
+    { tagName: 'link', attributes: { rel: 'icon', type: 'image/png', href: '/apic-web/images/logo/favicon-dark-64.png?v=2', media: '(prefers-color-scheme: dark)' } },
+    { tagName: 'link', attributes: { rel: 'apple-touch-icon', href: '/apic-web/images/logo/apple-touch-icon.png?v=2' } },
   ],
   url: 'https://rizukirr.github.io',
   baseUrl: '/apic-web/',
