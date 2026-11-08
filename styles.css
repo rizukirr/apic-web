@@ -1,5 +1,5 @@
 /* Hallmark · shape: Workbench (draw f0ea96 dealt Stat-Led; swapped, the page has no figures) · genre: modern-minimal · theme: brand · redesign: full
- * paper: oklch(91.3% 0.007 277) Tokyo Night Day, oklch(28.2% 0.036 275) Storm · accent: oklch(51.2% 0.156 264) Day blue, from apic-gui · display: IBM Plex Sans · body: IBM Plex Sans · outlier: IBM Plex Mono for commands and code · hero: Stage, the app bleeding off the right edge · nav: slab · footer: letter close · signature: the real apic-gui, large, carrying every section; the CLI as a switcher of real commands
+ * paper: oklch(91.3% 0.007 277) Tokyo Night Day, oklch(28.2% 0.036 275) Storm · accent: oklch(51.2% 0.156 264) Day blue, from apic-gui · display: IBM Plex Sans · body: IBM Plex Sans · outlier: IBM Plex Mono for commands and code · hero: Stage, the app on the container's right seven columns · nav: slab · footer: letter close · signature: the real apic-gui, large, carrying every section; the CLI as a switcher of real commands
  * job: try · imagery: product, screenshots 16 (the owner's apic- captures, cropped to images/web) · copy: verbatim (the hero line is the owner's wording)
  * axes: light/grotesk-sans/cool · posture: full palette (Tokyo Night syntax roles: command blue, flag orange, string green) · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H5 E4 S5 R4 V4 · weakest: P, a product tour argues little; it leads with the files-in-git claim and shows git doing the reviewing */
@@ -68,7 +68,7 @@ h2 { font-size: var(--text-section); line-height: 1.08; color: var(--color-ink);
 .top__links > a { color: var(--color-ink-2); text-decoration: none; }
 .top__links > a:hover { color: var(--color-accent); }
 
-/* hero: text on the container's left, the app bleeding past the right edge */
+/* hero: text on the container's left, the app on its right */
 .hero {
   --hero-text: 28rem;
   display: grid; align-items: center;
@@ -90,8 +90,8 @@ h2 { font-size: var(--text-section); line-height: 1.08; color: var(--color-ink);
 .hero__links a span { text-decoration: underline; text-decoration-color: color-mix(in oklab, var(--color-accent) 40%, transparent); text-underline-offset: 0.16em; }
 .hero__links a:hover span { text-decoration-color: var(--color-accent); }
 .hero__links svg { flex-shrink: 0; }
-.hero__shot { grid-column: 4 / -1; margin: 0; min-width: 0; }
-.hero__shot > img { width: 72rem; max-width: none; border-radius: var(--radius-card) 0 0 var(--radius-card); outline: 1px solid var(--color-rule); outline-offset: -1px; box-shadow: var(--shadow-card); }
+.hero__shot { grid-column: 4; margin: 0; min-width: 0; }
+.hero__shot > img { width: 100%; border-radius: var(--radius-card); outline: 1px solid var(--color-rule); outline-offset: -1px; box-shadow: var(--shadow-card); }
 
 /* screenshots */
 .shot { margin: 0; min-width: 0; }
