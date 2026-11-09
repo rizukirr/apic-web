@@ -9,6 +9,7 @@ If you are a web developer and can make it look better, please open a PR, thank 
 - `src/css/custom.css` styles the docs with the landing page's palette and fonts.
 - `static/images/logo/` has the apic logo: `apic-mark-light.png` (for light backgrounds) and `apic-mark-dark.png` (for dark backgrounds) with transparent backgrounds, 512px square icons with the background kept, the favicons and the Apple touch icon. Once deployed they are at `https://rizukirr.github.io/apic-web/images/logo/<file>`.
 - `images/` keeps the original apic-gui screenshots and the logo source (`apic-logo-source.png`); the cropped ones the page uses are in `static/images/web/`.
+- Each deploy copies every `apic-gui-*.msi` from the [apic releases](https://github.com/rizukirr/apic/releases) into `/downloads/<version>/`, for example `https://rizukirr.github.io/apic-web/downloads/1.0.0/apic-gui-v1.0.0-x86_64.msi`. The Microsoft Store needs these URLs because GitHub release links redirect. After an apic release, rerun the deploy so the new MSI is published: `gh workflow run deploy.yml -R rizukirr/apic-web`.
 
 ```bash
 npm install
