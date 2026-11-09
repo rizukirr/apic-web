@@ -29,10 +29,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for tag in $(gh release list -R rizukirr/apic -L 1000 --json tagName -q '.[].tagName'); do
-            gh release view "$tag" -R rizukirr/apic --json assets -q '.assets[].name' | grep -q '^apic-gui-.*\.msi$' || continue
+          tags=$(gh release list -R rizukirr/apic -L 1000 --json tagName -q '.[].tagName')
+          for tag in $tags; do
+            assets=$(gh release view "$tag" -R rizukirr/apic --json assets -q '.assets[].name')
+            grep -q '^apic-gui-.*\.msi$' <<< "$assets" || continue
             gh release download "$tag" -R rizukirr/apic -p 'apic-gui-*.msi' -D "build/downloads/${tag#v}"
           done
+          ls build/downloads/*/apic-gui-*.msi > /dev/null
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build
