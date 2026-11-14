@@ -28,7 +28,7 @@ Your contracts, templates, environments and settings stay on your device, in you
 
 ## Where you got apic
 
-The Microsoft Store, winget, GitHub Releases and other places that distribute apic may collect data under their own privacy policies.
+The Microsoft Store, winget, Homebrew, GitHub Releases and other places that distribute apic may collect data under their own privacy policies.
 
 ## Children
 
