@@ -27,6 +27,7 @@ Mainstream API tooling gates collaboration behind paywalls, charging per team me
 - **Arch / CachyOS (AUR):** `yay -S apic-bin`, which ships both.
 - **Fedora (COPR):** `sudo dnf copr enable rizukirr/apic && sudo dnf install apic-cli apic-gui`
 - **Flatpak:** `flatpak install io.github.rizukirr.apic` (GUI)
+- **Windows (Microsoft Store):** [get apic-gui from the Microsoft Store](https://apps.microsoft.com/detail/9NPTGZ29RW3N) (GUI), with automatic updates
 - **Windows (winget):** `winget install rizukirr.apic` (CLI), `winget install rizukirr.apic-gui` (GUI)
 - **Homebrew (macOS, Linux):** `brew install rizukirr/tap/apic` (CLI), `brew install --cask rizukirr/tap/apic-gui` (GUI, macOS)
 - **crates.io:** `cargo install apic-cli` and `cargo install apic-gui` (Rust 1.92+). On Linux, run `apic-gui --desktop-entry` once to add the GUI to your launcher.
