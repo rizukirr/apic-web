@@ -37,11 +37,15 @@
     <div class="hero__text">
       <h1 id="hero-h"><span class="nowrap">Git-Native</span> API contracts and client</h1>
       <p class="lead">No seats, no workspaces behind a paywall. Collaboration made easy and free for everyone.</p>
-      <div class="line">
-        <code class="line__cmd"><span class="p">$</span> <span class="c">cargo install</span> apic-cli</code>
-        <button class="btn btn--primary" type="button" data-copy="cargo install apic-cli">Copy</button>
+      <div class="dl" role="group" aria-labelledby="dl-label">
+        <p class="dl__label" id="dl-label">Download</p>
+        <div class="dl__grid">
+          <a class="dl__btn" href="#install-linux" data-os="linux"><span class="dl__os">Linux</span><span class="dl__via">Flathub</span></a>
+          <a class="dl__btn" href="#install-windows" data-os="windows"><span class="dl__os">Windows</span><span class="dl__via">Microsoft Store</span></a>
+          <a class="dl__btn" href="#install-macos" data-os="macos"><span class="dl__os">macOS</span><span class="dl__via">Homebrew</span></a>
+        </div>
       </div>
-      <p class="hero__links"><a href="https://github.com/rizukirr/apic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg><span>Star on GitHub</span></a><a href="#install"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span>Other ways to install</span></a><a href="https://apps.microsoft.com/detail/9NPTGZ29RW3N"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5"/><rect x="13.5" y="3" width="7.5" height="7.5"/><rect x="3" y="13.5" width="7.5" height="7.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5"/></svg><span>Get it from Microsoft Store</span></a></p>
+      <p class="hero__links"><a href="https://github.com/rizukirr/apic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg><span>Star on GitHub</span></a></p>
     </div>
     <figure class="shot hero__shot" data-kind="product">
       <img class="for-light" src="images/web/main-light.webp" width="1800" height="969" alt="apic-gui in the Tokyo Night Day theme with the Forgot Password contract open: the contract tree, the POST request with its headers and JSON body, and its 200 example response." fetchpriority="high">
@@ -190,18 +194,68 @@
       <h2 id="install-h">Install</h2>
       <p class="note">Prebuilt archives with checksums for Linux, macOS and Windows are on the <a href="https://github.com/rizukirr/apic/releases">releases page</a>.</p>
     </div>
-    <table>
-      <caption class="visually-hidden">Install commands by platform</caption>
-      <tbody>
-        <tr><th scope="row">Arch</th><td><code>yay -S apic-bin</code></td><td><button class="btn" type="button" data-copy="yay -S apic-bin">Copy</button></td></tr>
-        <tr><th scope="row">Fedora</th><td><code>sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-cli apic-gui</code></td><td><button class="btn" type="button" data-copy="sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-cli apic-gui">Copy</button></td></tr>
-        <tr><th scope="row">Flatpak</th><td><code>flatpak install io.github.rizukirr.apic</code></td><td><button class="btn" type="button" data-copy="flatpak install io.github.rizukirr.apic">Copy</button></td></tr>
-        <tr><th scope="row">Microsoft Store</th><td>apic-gui for Windows, with automatic updates</td><td><a class="btn" href="https://apps.microsoft.com/detail/9NPTGZ29RW3N">Get</a></td></tr>
-        <tr><th scope="row">Windows</th><td><code>winget install rizukirr.apic rizukirr.apic-gui</code></td><td><button class="btn" type="button" data-copy="winget install rizukirr.apic rizukirr.apic-gui">Copy</button></td></tr>
-        <tr><th scope="row">Homebrew</th><td><code>brew install rizukirr/tap/apic &amp;&amp; brew install --cask rizukirr/tap/apic-gui</code></td><td><button class="btn" type="button" data-copy="brew install rizukirr/tap/apic &amp;&amp; brew install --cask rizukirr/tap/apic-gui">Copy</button></td></tr>
-        <tr><th scope="row">Cargo</th><td><code>cargo install apic-cli apic-gui</code></td><td><button class="btn" type="button" data-copy="cargo install apic-cli apic-gui">Copy</button></td></tr>
-      </tbody>
-    </table>
+    <div class="install__body">
+      <div class="seg" role="tablist" aria-label="Platform" data-os-tabs>
+        <button class="seg__tab" type="button" role="tab" id="t-linux" aria-controls="install-linux" aria-selected="true">Linux</button>
+        <button class="seg__tab" type="button" role="tab" id="t-windows" aria-controls="install-windows" aria-selected="false">Windows</button>
+        <button class="seg__tab" type="button" role="tab" id="t-macos" aria-controls="install-macos" aria-selected="false">macOS</button>
+        <button class="seg__tab" type="button" role="tab" id="t-cargo" aria-controls="install-cargo" aria-selected="false">Cargo</button>
+      </div>
+
+      <div class="os" id="install-linux" role="tabpanel" aria-labelledby="t-linux" tabindex="0">
+        <h3 class="os__name">Linux</h3>
+        <div class="os__lead">
+          <a class="btn btn--primary btn--lg" href="https://flathub.org/apps/io.github.rizukirr.apic">Get it on Flathub</a>
+          <p>apic-gui as a Flatpak, from Flathub.</p>
+        </div>
+        <table>
+          <caption class="visually-hidden">Install commands for Linux</caption>
+          <tbody>
+          <tr><th scope="row">Flatpak</th><td><code>flatpak install io.github.rizukirr.apic</code></td><td><button class="btn" type="button" data-copy="flatpak install io.github.rizukirr.apic">Copy</button></td></tr>
+          <tr><th scope="row">Arch</th><td><code>yay -S apic-bin</code></td><td><button class="btn" type="button" data-copy="yay -S apic-bin">Copy</button></td></tr>
+          <tr><th scope="row">Fedora</th><td><code>sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-cli apic-gui</code></td><td><button class="btn" type="button" data-copy="sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-cli apic-gui">Copy</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="os" id="install-windows" role="tabpanel" aria-labelledby="t-windows" tabindex="0">
+        <h3 class="os__name">Windows</h3>
+        <div class="os__lead">
+          <a class="btn btn--primary btn--lg" href="https://apps.microsoft.com/detail/9NPTGZ29RW3N">Get it from Microsoft Store</a>
+          <p>apic-gui for Windows, with automatic updates.</p>
+        </div>
+        <table>
+          <caption class="visually-hidden">Install commands for Windows</caption>
+          <tbody>
+          <tr><th scope="row">winget</th><td><code>winget install rizukirr.apic rizukirr.apic-gui</code></td><td><button class="btn" type="button" data-copy="winget install rizukirr.apic rizukirr.apic-gui">Copy</button></td></tr>
+          </tbody>
+        </table>
+        <p class="os__more">The MSI installer and zip archives are on the <a href="https://github.com/rizukirr/apic/releases/latest">latest release</a>.</p>
+      </div>
+
+      <div class="os" id="install-macos" role="tabpanel" aria-labelledby="t-macos" tabindex="0">
+        <h3 class="os__name">macOS</h3>
+        <table>
+          <caption class="visually-hidden">Install commands for macOS</caption>
+          <tbody>
+          <tr><th scope="row">Homebrew</th><td><code>brew install rizukirr/tap/apic &amp;&amp; brew install --cask rizukirr/tap/apic-gui</code></td><td><button class="btn" type="button" data-copy="brew install rizukirr/tap/apic &amp;&amp; brew install --cask rizukirr/tap/apic-gui">Copy</button></td></tr>
+          </tbody>
+        </table>
+        <p class="os__more">The app for Apple Silicon and Intel Macs is also on the <a href="https://github.com/rizukirr/apic/releases/latest">latest release</a>.</p>
+      </div>
+
+      <div class="os" id="install-cargo" role="tabpanel" aria-labelledby="t-cargo" tabindex="0">
+        <h3 class="os__name">Cargo</h3>
+        <table>
+          <caption class="visually-hidden">Install from crates.io</caption>
+          <tbody>
+          <tr><th scope="row">Both</th><td><code>cargo install apic-cli apic-gui</code></td><td><button class="btn" type="button" data-copy="cargo install apic-cli apic-gui">Copy</button></td></tr>
+          <tr><th scope="row">CLI only</th><td><code>cargo install apic-cli</code></td><td><button class="btn" type="button" data-copy="cargo install apic-cli">Copy</button></td></tr>
+          </tbody>
+        </table>
+        <p class="os__more">Builds from source on any platform with Rust installed.</p>
+      </div>
+    </div>
   </section>
 
   <section class="docs container" id="docs" aria-labelledby="docs-h">
