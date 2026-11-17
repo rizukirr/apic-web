@@ -4,7 +4,7 @@ import { tokyoNightDay, tokyoNightStorm } from './src/prism-tokyo-night.js';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'apic',
-  tagline: 'Git-Native API contracts and client',
+  tagline: 'Git-Native API contracts and client for the agentic era',
   favicon: 'images/logo/favicon-light-64.png?v=2',
   headTags: [
     { tagName: 'link', attributes: { rel: 'icon', type: 'image/png', href: '/apic-web/images/logo/favicon-dark-64.png?v=2', media: '(prefers-color-scheme: dark)' } },
