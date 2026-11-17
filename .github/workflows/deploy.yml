@@ -25,6 +25,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      # Stamp the landing page's CSS and JS links with this commit, so a browser
+      # holding an older copy fetches the new files instead of mixing versions.
+      - run: sed -i "s/__BUILD__/${GITHUB_SHA::7}/g" build/index.html build/styles.css
       - name: Copy apic-gui MSIs from releases
         env:
           GH_TOKEN: ${{ github.token }}
