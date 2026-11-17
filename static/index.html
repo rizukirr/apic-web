@@ -202,7 +202,7 @@
         <button class="seg__tab" type="button" role="tab" id="t-cargo" aria-controls="install-cargo" aria-selected="false">Cargo</button>
       </div>
 
-      <div class="os" id="install-linux" role="tabpanel" aria-labelledby="t-linux" tabindex="0">
+      <div class="os" id="install-linux" role="tabpanel" aria-labelledby="t-linux">
         <h3 class="os__name">Linux</h3>
         <div class="os__lead">
           <a class="btn btn--primary btn--lg" href="https://flathub.org/apps/io.github.rizukirr.apic">Get it on Flathub</a>
@@ -212,13 +212,15 @@
           <caption class="visually-hidden">Install commands for Linux</caption>
           <tbody>
           <tr><th scope="row">Flatpak</th><td><code>flatpak install io.github.rizukirr.apic</code></td><td><button class="btn" type="button" data-copy="flatpak install io.github.rizukirr.apic">Copy</button></td></tr>
+          <tr><th scope="row">Ubuntu 26.04</th><td><code>sudo add-apt-repository ppa:rizukirr/apic &amp;&amp; sudo apt install apic apic-gui</code></td><td><button class="btn" type="button" data-copy="sudo add-apt-repository ppa:rizukirr/apic &amp;&amp; sudo apt install apic apic-gui">Copy</button></td></tr>
           <tr><th scope="row">Arch</th><td><code>yay -S apic-bin</code></td><td><button class="btn" type="button" data-copy="yay -S apic-bin">Copy</button></td></tr>
           <tr><th scope="row">Fedora</th><td><code>sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-cli apic-gui</code></td><td><button class="btn" type="button" data-copy="sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-cli apic-gui">Copy</button></td></tr>
           </tbody>
         </table>
+        <p class="os__more">The Ubuntu package is for 64-bit Intel and AMD. On Debian and other distributions, use the Flatpak or the archives on the <a href="https://github.com/rizukirr/apic/releases/latest">latest release</a>.</p>
       </div>
 
-      <div class="os" id="install-windows" role="tabpanel" aria-labelledby="t-windows" tabindex="0">
+      <div class="os" id="install-windows" role="tabpanel" aria-labelledby="t-windows">
         <h3 class="os__name">Windows</h3>
         <div class="os__lead">
           <a class="btn btn--primary btn--lg" href="https://apps.microsoft.com/detail/9NPTGZ29RW3N">Get it from Microsoft Store</a>
@@ -233,7 +235,7 @@
         <p class="os__more">The MSI installer and zip archives are on the <a href="https://github.com/rizukirr/apic/releases/latest">latest release</a>.</p>
       </div>
 
-      <div class="os" id="install-macos" role="tabpanel" aria-labelledby="t-macos" tabindex="0">
+      <div class="os" id="install-macos" role="tabpanel" aria-labelledby="t-macos">
         <h3 class="os__name">macOS</h3>
         <table>
           <caption class="visually-hidden">Install commands for macOS</caption>
@@ -244,7 +246,7 @@
         <p class="os__more">The app for Apple Silicon and Intel Macs is also on the <a href="https://github.com/rizukirr/apic/releases/latest">latest release</a>.</p>
       </div>
 
-      <div class="os" id="install-cargo" role="tabpanel" aria-labelledby="t-cargo" tabindex="0">
+      <div class="os" id="install-cargo" role="tabpanel" aria-labelledby="t-cargo">
         <h3 class="os__name">Cargo</h3>
         <table>
           <caption class="visually-hidden">Install from crates.io</caption>
