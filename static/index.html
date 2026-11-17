@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=__BUILD__">
 <script>try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
 </head>
 <body>
@@ -212,12 +212,12 @@
           <caption class="visually-hidden">Install commands for Linux</caption>
           <tbody>
           <tr><th scope="row">Flatpak</th><td><code>flatpak install io.github.rizukirr.apic</code></td><td><button class="btn" type="button" data-copy="flatpak install io.github.rizukirr.apic">Copy</button></td></tr>
-          <tr><th scope="row">Ubuntu 26.04</th><td><code>sudo add-apt-repository ppa:rizukirr/apic &amp;&amp; sudo apt install apic apic-gui</code></td><td><button class="btn" type="button" data-copy="sudo add-apt-repository ppa:rizukirr/apic &amp;&amp; sudo apt install apic apic-gui">Copy</button></td></tr>
+          <tr><th scope="row">Ubuntu</th><td><code>sudo add-apt-repository ppa:rizukirr/apic &amp;&amp; sudo apt install apic apic-gui</code></td><td><button class="btn" type="button" data-copy="sudo add-apt-repository ppa:rizukirr/apic &amp;&amp; sudo apt install apic apic-gui">Copy</button></td></tr>
           <tr><th scope="row">Arch</th><td><code>yay -S apic-bin</code></td><td><button class="btn" type="button" data-copy="yay -S apic-bin">Copy</button></td></tr>
           <tr><th scope="row">Fedora</th><td><code>sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-cli apic-gui</code></td><td><button class="btn" type="button" data-copy="sudo dnf copr enable rizukirr/apic &amp;&amp; sudo dnf install apic-cli apic-gui">Copy</button></td></tr>
           </tbody>
         </table>
-        <p class="os__more">The Ubuntu package is for 64-bit Intel and AMD. On Debian and other distributions, use the Flatpak or the archives on the <a href="https://github.com/rizukirr/apic/releases/latest">latest release</a>.</p>
+        <p class="os__more">The Ubuntu package is for Ubuntu 26.04 on 64-bit Intel and AMD. On Debian and other distributions, use the Flatpak or the archives on the <a href="https://github.com/rizukirr/apic/releases/latest">latest release</a>.</p>
       </div>
 
       <div class="os" id="install-windows" role="tabpanel" aria-labelledby="t-windows">
@@ -288,6 +288,6 @@
 
 <p class="visually-hidden" aria-live="polite" data-copy-status></p>
 
-<script src="main.js" defer></script>
+<script src="main.js?v=__BUILD__" defer></script>
 </body>
 </html>
