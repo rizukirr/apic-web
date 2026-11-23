@@ -47,11 +47,11 @@ apic open -f login                          # open it in your editor
 apic send -f login --env dev                # send it with values from .apic/env/dev.toml
 ```
 
-New contracts start from the project template in `.apic/template/`, so the team's base URL, standing headers and response envelope come for free. Everything else is in [COMMAND.md](commands.md), and environments and variables for `apic send` are in [SENDING.md](sending.md).
+New contracts start from the project template in `.apic/template/`, so the team's base URL, standing headers and response envelope come for free. Everything else is in [COMMAND.md](commands.md), and environments and variables for `apic send` are in [SENDING.md](sending.md). Every command also takes `--json` for one JSON document on stdout and stable exit codes, see [Machine-readable output](commands.md#machine-readable-output).
 
 ## Desktop GUI
 
-`apic-gui` opens the same projects: browse and edit contracts in tables, edit JSON and multipart bodies, send requests with an environment and see the live response, import Postman collections, and stage, commit, switch branches and resolve conflicts with git, all on the same files the CLI uses. See [GUI.md](gui.md).
+`apic-gui` opens the same projects: browse and edit contracts in tables, edit JSON and multipart bodies, send requests with an environment and see the live response, import Postman collections and OpenAPI specs, export the project as either, and stage, commit, switch branches and resolve conflicts with git, all on the same files the CLI uses. See [GUI.md](gui.md).
 
 ## Contracts
 
@@ -70,10 +70,14 @@ A contract is one JSON file per endpoint: name, method, URL, query params, heade
 | `apic open` | Open a contract or template in your editor. |
 | `apic remove` | Delete a contract or template. |
 | `apic validate` | Check contracts against the schema, for CI or a pre-commit hook. |
-| `apic convert` | Import a Postman collection as contracts. |
+| `apic convert` | Import a Postman collection or an OpenAPI spec as contracts. |
+| `apic export` | Export contracts as a Postman collection or an OpenAPI document. |
 | `apic send` | Send a contract's request and print the response. |
+| `apic check` | Send contracts and check the live responses against them. |
 | `apic env` | List the environments in `.apic/env`. |
 | `apic vars` | Convert `{{name}}` variables to `$name`. |
+| `apic docs` | Print a reference doc built into apic. |
+| `apic skill` | Print or install the agent skill for AI coding agents, see [AI agents](agents.md). |
 
 Every command, flag and example is documented in [COMMAND.md](commands.md).
 

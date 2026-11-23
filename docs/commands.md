@@ -140,7 +140,7 @@ Resolves `<query>` like `read`, fills the variables and sends the contract's req
 - `--var <name=value>` sets a variable and overrides the environment. Repeatable.
 - `-i` prints the status line and response headers before the body.
 - `--timeout <secs>` gives up after that many seconds, 30 by default.
-- `--dry-run` prints the request with every variable value shown as `$name`, and sends nothing. See [sending.md](sending.md#dry-run).
+- `--dry-run` prints the request with every variable value shown as `$name`, and sends nothing. See [SENDING.md](sending.md#dry-run).
 
 ```bash
 apic send -f auth/login --env dev
@@ -295,6 +295,73 @@ warning: request "Preflight" uses method TRACE, unsupported by apic — imported
 Converted 12 contract(s) into imported (1 warning)
 ```
 
+## `apic convert --openapi <file> [--destination <dir>]`
+Imports an OpenAPI spec as apic contracts, one JSON file per operation. Accepts OpenAPI 3.0, OpenAPI 3.1 and Swagger 2.0, written in JSON or YAML (auto-detected). `--destination` and `--force` work as they do for `--postman`, and exactly one of `--postman` and `--openapi` is required.
+
+Each operation lands in a folder named after its first tag, or at the root when it has no tag. The file is named from the `operationId` (`listPets` becomes `list_pets.json`), then the `summary`, then the method and path. The contract `name` is the `summary`, then the `operationId`.
+
+- **URL.** The first server URL, with its variables filled from their defaults, followed by the path. Swagger 2.0 builds it from `schemes`, `host` and `basePath`. A spec with no server, or a relative one, starts with `{{baseUrl}}`, so the host comes from an environment variable.
+- **Parameters.** Query and header parameters become `query` and `headers` entries, with their `required` flags. Path parameters stay inline in the URL as `{name}`. Cookie parameters are ignored.
+- **Bodies.** A contract body is an example payload, so each body uses the spec's `example` or the first of its `examples` when present. Otherwise apic builds one from the schema, following local `$ref`s, merging `allOf` and taking the first `oneOf`/`anyOf` branch: strings become `"string"` (or a value shaped by `format`, such as a date or an email), numbers `0`, booleans `false`, and a recursive reference `null`. A `multipart/form-data` body becomes `multipart` parts, with `format: binary` properties as file parts.
+- **Responses.** Each status code becomes a response with its description, headers and body. A range such as `2XX` becomes `200`, and `default` is left out because it has no status code.
+
+These are imported with a warning: a body in a media type apic does not model (form-urlencoded, `text/plain`, `application/octet-stream`) is imported as a JSON body, an external or missing `$ref` is left out, and a `TRACE` operation is imported as `GET`.
+
+```bash
+apic convert --openapi openapi.yaml
+apic convert --openapi swagger.json --destination imported
+```
+
+```text
+warning: request "Upload a release asset" sends application/octet-stream, imported as a JSON body
+Converted 42 contract(s) into imported (1 warning)
+```
+
+## `apic export --postman <file> [-f <query>] [--env <name>] [--name <name>] [--force]`
+Exports contracts as a Postman Collection v2.1 file, ready to import into Postman.
+
+- `--postman <file>`, the collection file to write. An existing file is left untouched unless `--force` is passed.
+- `-f <query>`, one contract (path, extensionless or fuzzy), or a folder ending in `/`. Omit it to export every contract.
+- `--env <name>`, fill the collection variables from that environment's shared file, `.apic/env/<name>.toml`. The local file is never read, so secrets stay on your machine.
+- `--name <name>`, the collection name. Defaults to the project folder's name.
+
+Each contract folder becomes a Postman folder, each contract a request, and each documented response a saved example with its status, headers and body. `$name`, `${name}` and `{{name}}` become `{{name}}`, `$$` becomes `$`, and a `{id}` path param in the URL becomes `:id`. Every variable the contracts use is listed as a collection variable, with an empty value when the shared env file has none. A multipart body becomes `formdata`, with each file part's path as its `src`.
+
+Postman has no `required` flag on query params or headers, so that is not exported. A contract that does not parse is skipped with a warning.
+
+Keep the output file outside the contracts folder. A collection written inside it is read as a contract, so `apic validate` reports it as broken, and the export warns about it.
+
+```bash
+apic export --postman ../MyAPI.postman.json --env dev
+apic export --postman ../users.postman.json -f users/ --name "Users API"
+```
+
+```text
+Exported 12 contract(s) to ../MyAPI.postman.json
+```
+
+## `apic export --openapi <file> [--openapi-version <3.0|3.1>] [-f <query>] [--env <name>] [--name <name>] [--force]`
+Exports contracts as an OpenAPI document, written as YAML when the file ends in `.yaml` or `.yml` and as JSON otherwise. `-f`, `--env`, `--name` (the `info.title`) and `--force` work as they do for `--postman`. `--openapi-version` picks 3.0 (the default, `3.0.3`, supported by the most tools) or 3.1 (`3.1.0`).
+
+- **Operations.** Each contract becomes one operation. Its folder is the tag, its file name the `operationId` (prefixed with the folder when two files share a name), its `name` the `summary` and its `description` the description.
+- **Servers.** A URL that starts with variables, such as `$base/users` or `{{baseUrl}}/{{base_path}}/users`, uses them as the server (`{base}` or `{baseUrl}/{base_path}`), with each server variable's default taken from the shared env file named by `--env`, or empty. A URL with a scheme uses its origin. The server most contracts use goes at the top level, and an operation on another server gets its own `servers` entry.
+- **Parameters.** `{id}` path params and any other variable in the path become required path params. Query params and headers keep their `required` flags and descriptions. Their values become examples, typed as a boolean or number when the text reads back exactly (`20`, `true`), otherwise kept as text, variables included.
+- **Bodies.** Each JSON body is exported as its example plus a schema inferred from it: objects with `properties`, arrays typed by their first item, and `null` as an untyped value. The schema only knows what the example shows, so enums, formats, bounds and `required` lists are not recovered. A multipart body becomes `multipart/form-data` with file parts as `format: binary`. A `Content-Type` header sets the request body's media type instead of becoming a parameter.
+- **Auth.** OpenAPI does not allow `Authorization` as a header parameter. An `Authorization: Bearer ...` header becomes a `bearerAuth` security scheme, `Basic ...` becomes `basicAuth`, and any other value an API key scheme.
+- **Responses.** Each documented status becomes a response with its headers and body. When a contract documents a status more than once, the bodies become named `examples` under that status, each with its description as the summary, and `apic convert --openapi` turns them back into separate responses. A contract with no responses gets a `default` one, since OpenAPI requires one.
+
+These warn: two contracts with the same method and path (OpenAPI keys operations by path, so the second is skipped even if it targets another server), a status outside 100 to 599, and a repeated status with a multipart body. File paths of multipart file parts are not exported.
+
+```bash
+apic export --openapi ../openapi.yaml --env dev
+apic export --openapi ../openapi.json --openapi-version 3.1 -f users/
+```
+
+```text
+warning: skipped profile/logout.json: POST /auth/logout is already exported from authentication/logout.json
+Exported 14 contract(s) to ../openapi.yaml (1 warning)
+```
+
 ## `apic docs <name>`
 Prints a reference doc built into apic, as Markdown. `<name>` is `command` (this file), `sending` (environments, variables and dry runs) or `contract` (the contract file format). The text always matches the installed version, and the command works outside a project.
 
@@ -353,6 +420,7 @@ What each command prints with `--json`:
 | `vars --convert` | `{"files": [{"path", "count"}], "total", "written"}` |
 | `create`, `edit`, `remove` | `{"action": "created" / "updated" / "removed", "path"}` |
 | `convert` | `{"written", "destination"}` |
+| `export` | `{"exported", "output"}` |
 | `open` | `{"path"}` once the editor closes |
 | `init` | `{"status": "initialized" / "template_seeded"}` |
 | `config` | `{"working_dir"}` |
