@@ -6,6 +6,8 @@ sidebar_position: 6
 
 apic ships an [Agent Skills](https://agentskills.io) `SKILL.md` that teaches AI coding agents to find, preview, send and check contracts safely. The skill tells the agent to preview requests with `apic send --dry-run`, which shows variables as `$name`, and never to read `.apic/env/*.local.toml`, so your secrets stay out of the agent's context.
 
+It also covers bringing contracts in and out: importing an OpenAPI spec or a Postman collection with `apic convert`, and exporting with `apic export`. The agent is told which variables an import leaves for you to fill, that exported OpenAPI schemas are inferred from the examples, and to pass `--force` only when you asked to replace a file.
+
 ## Install
 
 ```bash
